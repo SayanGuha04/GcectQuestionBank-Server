@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
+import express from "express";
 import cors from "cors";
-import pkg from "./db.js";
+import pkg from "./db/db.cjs";
 
 import jwtAuth from './routes/jwtAuth.js';
 import dashboard from './routes/dashboard.js'

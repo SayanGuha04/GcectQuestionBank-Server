@@ -1,18 +1,11 @@
-
 import express from 'express';
-import pkg from "../db.cjs";
+import pkg from "../db/db.cjs";
 import bcrypt from 'bcrypt';
 import jwtGenerator from '../utils/jwtGenerator.js';
 import validInfo from '../middleware/validinfo.js'
-import authorization from '../middleware/authorization.js';
-
-
 
 const router = express.Router();
 const {pool} = pkg;
-
-
-
 
 router.post("/student", validInfo, async (req, res) => {
     try {
@@ -57,7 +50,6 @@ router.post("/student", validInfo, async (req, res) => {
 });
 
 
-
 router.post("/teacher", async (req, res) => {
     try {
         
@@ -100,8 +92,6 @@ router.post("/teacher", async (req, res) => {
 });
 
 
-
-
 router.post("/coe", async (req, res) => {
     try {
         
@@ -142,10 +132,5 @@ router.post("/coe", async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
-
-
-
-
-
 
 export default router;

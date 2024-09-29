@@ -1,5 +1,5 @@
 import express from 'express';
-import pkg from "../db.cjs";
+import pkg from "../db/db.cjs";
 import isTeacher from '../middleware/isTeacher.js';
 
 

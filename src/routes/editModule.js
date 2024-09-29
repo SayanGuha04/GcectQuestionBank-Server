@@ -1,12 +1,8 @@
 import express from 'express';
-import pkg from "../db.cjs";
-import authorization from '../middleware/authorization.js';
-
+import pkg from "../db/db.cjs";
 
 const router = express.Router();
 const {pool} = pkg;
-
-
 
 router.put("/:id", async (req, res) => {
     try {
@@ -47,7 +43,5 @@ router.put("/:id", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
-
-
 
 export default router;

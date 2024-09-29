@@ -1,11 +1,5 @@
 import express from 'express';
-import pkg from "../db.cjs";
-import bcrypt from 'bcrypt';
-import jwtGenerator from '../utils/jwtGenerator.js';
-import validInfo from '../middleware/validinfo.js'
-import authorization from '../middleware/authorization.js';
-
-
+import pkg from "../db/db.cjs";
 
 const router = express.Router();
 const {pool} = pkg;

@@ -1,12 +1,8 @@
 import express from 'express';
-import pkg from "../db.cjs";
-import authorization from '../middleware/authorization.js';
-
+import pkg from "../db/db.cjs";
 
 const router = express.Router();
 const {pool} = pkg;
-
-
 
 //:column/:value
 
@@ -51,43 +47,7 @@ router.get("/filter", async (req, res) => {
 
         res.json(question.rows);
         
-    
 
-        /*
-        const { column, value } = req.params;
-
-        // List of allowed columns for validation
-        const allowedColumns = [
-            "qid",
-            "question",
-            "marks",
-            "co",
-            "conum",
-            "module",
-            "yr",
-            "subcode",
-            "sem",
-            "department",
-            "degree",
-            "qtype"
-        ];
-
-        // Check if the column is valid
-        if (!allowedColumns.includes(column)) {
-            return res.status(400).json({ error: "Invalid column name" });
-        }
-
-        // Construct the query dynamically
-        const queryString = `SELECT * FROM test WHERE ${column} = $1`;
-        const question = await pool.query(queryString, [value]);
-
-        if (question.rows.length === 0) {
-            return res.status(404).json({ error: "No data found" });
-        }
-
-        res.json(question.rows);
-
-    */
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: "Internal Server Error" });

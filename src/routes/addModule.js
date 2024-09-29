@@ -1,11 +1,8 @@
 import express from 'express';
-import pkg from "../db.cjs";
-import authorization from '../middleware/authorization.js';
-
+import pkg from "../db/db.cjs";
 
 const router = express.Router();
 const {pool} = pkg;
-
 
 router.post("/", async (req, res) => {
     try {
