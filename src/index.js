@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
-import pkg from "./db/db.cjs";
 
 import jwtAuth from './routes/jwtAuth.js';
 import dashboard from './routes/dashboard.js'
@@ -36,7 +35,6 @@ dotenv.config({
 
 const app = express();
 const port = process.env.PORT;
-const {pool} = pkg;
 
 //middleware
 
@@ -48,39 +46,18 @@ app.use(express.json());   // helps us to access req.body
 //register and login routes
 
 app.use('/auth', jwtAuth);
-
-//dashboard route
-
 app.use('/dashboard', dashboard);
-
-//add a question 
-
 app.use('/questions', addQuestions);
-
-//get all question 
-
 app.use('/questions', getAllQuestions);
-
-//get specific questions
-
 app.use('/questions', getQuestions);
-
-//edit a question 
-
 app.use('/questions', editQuestions);
-
-//delete a question 
-
 app.use('/questions', deleteQuestions);
-
-
 
 //verify type
 
 app.use('/isstudent', studentDashboard);
 app.use('/isteacher', teacherDashboard);
 app.use('/iscoe', coeDashboard);
-
 
 app.use("/addSubject", addSubject)
 app.use("/addModule", addModule)
@@ -91,14 +68,10 @@ app.use("/deleteModule", deleteModule)
 app.use("/deleteSubject", deleteSubject)
 
 app.use("/getAllSubjects", getAllSubjects)
-
 app.use("/getModules", getModules)
-
 app.use("/getQuestions", getQuesFromModule)
 
-
 app.use("/getFilters", getFilters)
-
 
 app.listen(port, () => {
     console.log(`server has started on port ${port}`);
